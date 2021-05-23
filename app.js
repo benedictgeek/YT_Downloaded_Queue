@@ -3,7 +3,7 @@ let express = require("express");
 let path = require("path");
 let cookieParser = require("cookie-parser");
 let logger = require("morgan");
-const { getVideo } = require("./controllers/videoController");
+const { getVideo, downloadVideo } = require("./controllers/videoController");
 
 let app = express();
 
@@ -15,7 +15,7 @@ require("./queue/consumer");
 
 app.get("/get-video", getVideo);
 
-app.get("/download-video/:id", (req, res, next) => {});
+app.get("/download-video/:id", downloadVideo);
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {
